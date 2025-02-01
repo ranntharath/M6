@@ -15,7 +15,6 @@ class Person{
         this.sex = sex;
     }
     public void inputPerson(){
-
         System.out.print("Enter ID : "); id = scanner.nextInt();
         System.out.print("Enter Name : "); scanner.nextLine(); name = scanner.nextLine();
         System.out.print("Enter Sex : "); sex = scanner.next();
@@ -44,7 +43,7 @@ class Student extends Person{
     }
     public void outputStudent(){
         super.outputPerson();
-        System.out.print("\t"+average);
+        System.out.println("\t"+average);
     }
 
     public double getAverage() {
@@ -58,7 +57,7 @@ class Student extends Person{
 public class Main {
     static void inputAll(Student[] stu, int n){
         for (int i = 0; i < n ; i++) {
-            System.out.println("enter student :"+(i+1));
+            System.out.println("=> Student :"+(i+1));
             Student student = new Student();
             student.inputStudent();
             stu[i] = student;
@@ -68,7 +67,6 @@ public class Main {
         System.out.println("ID\tName\tSex\tAverage");
         for (int i = 0; i < n; i++) {
             stu[i].outputStudent();
-            System.out.println();
         }
     }
     static Student maxAverage(Student[] stu, int n){
@@ -83,7 +81,7 @@ public class Main {
     static int search(Student[] stu, int n){
         boolean isFound = false;
         int index = 0;
-        System.out.print("\nEnter id you want to update average : ");
+        System.out.print("Enter id you want to update average : ");
         int search = new Scanner(System.in).nextInt();
         for (int i = 0; i < n; i++) {
             if(stu[i].getId() == search){
@@ -92,7 +90,7 @@ public class Main {
                 break;
             }
         }
-        if (!isFound) return 0;
+        if (!isFound) return -1;
         else return index;
     }
     static void sort(Student[] stu, int n){
@@ -108,31 +106,31 @@ public class Main {
         }
     }
     public static void main(String[] args) {
-        System.out.println("Enter number of Student : ");
+        System.out.print("Enter number of Student : ");
         int n = new Scanner(System.in).nextInt();
 
         Student[] students = new Student[n];
 //        input
-        System.out.print("===== Enter All Students Info =====");
+        System.out.println("===== Enter All Students Info =====");
         inputAll(students,n);
 //        output
         outputAll(students,n);
 //        max average
-        System.out.println("==================================");
-        System.out.println("max average");
+        System.out.println("========== max average ===========");
+        System.out.println("id\tname\tsex\taverage");
         maxAverage(students,n).outputStudent();
 
 //        search and update average
-        System.out.println("===========    update  ==========");
+        System.out.println("===========    update  ===========");
         int index = search(students,n);
-        if(index !=0){
+        if(index !=-1){
             students[index].setAverage(50);
             outputAll(students,n);
         }else {
             System.out.println("id not found");
         }
 //        sort
-        System.out.println("===========    sort  ==========");
+        System.out.println("===========    sort   ==========");
         sort(students,n);
         outputAll(students,n);
     }
