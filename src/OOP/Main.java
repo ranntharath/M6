@@ -80,12 +80,11 @@ public class Main {
     }
     static int search(Student[] stu, int n){
         boolean isFound = false;
-        int index = 0;
+        int index = -1;
         System.out.print("Enter id you want to update average : ");
         int search = new Scanner(System.in).nextInt();
         for (int i = 0; i < n; i++) {
             if(stu[i].getId() == search){
-                isFound = true;
                 index = i;
                 break;
             }
