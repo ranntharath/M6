@@ -92,6 +92,7 @@ public class ArrayListDemo {
         //sort
         products.stream().sorted(Comparator.comparing(Product::getPrice)).forEach(System.out::println);
 //        sort(products);
+
 //        products.forEach(System.out::println);
 
     }
